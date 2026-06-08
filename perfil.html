@@ -3,12 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>PlaniMass</title>
+    <title>PlaniMaiss</title>
     
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    
     <script src="tailwind-config.js"></script>
-    
     <link href="style.css" rel="stylesheet"/>
     
     <link rel="preconnect" href="https://fonts.googleapis.com"/>
@@ -23,14 +21,14 @@
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
             <div>
-                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMaiss</h1>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
             </div>
         </div>
     </div>
     <ul class="flex-1 flex flex-col gap-sm">
         <li>
-            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="index.html">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span>Painel</span>
             </a>
@@ -77,11 +75,10 @@
         <div class="flex items-center md:hidden">
             <span class="material-symbols-outlined text-primary cursor-pointer active:scale-95">menu</span>
         </div>
-        <div class="hidden md:flex gap-lg">
-        </div>
+        <div class="hidden md:flex gap-lg"></div>
         <div class="flex items-center gap-sm">
-            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors hover:text-primary-container" data-icon="notifications">notifications</span>
-            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors hover:text-primary-container" data-icon="logout">logout</span>
+            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors" data-icon="notifications">notifications</span>
+            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors" data-icon="logout">logout</span>
         </div>
     </header>
 
@@ -91,98 +88,206 @@
                 <h2 class="font-headline-lg text-headline-lg text-on-surface">Perfil do Funcionário</h2>
                 <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Gerencie informações pessoais e visualize métricas de atividade.</p>
             </div>
+            
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
-                    <div class="lg:col-span-4 flex flex-col gap-lg">
-                        <div class="bg-surface rounded-xl border border-outline-variant p-lg flex flex-col items-center text-center">
-                            <div class="relative w-32 h-32 mb-md">
-                                <div class="w-full h-full rounded-full overflow-hidden border-4 border-surface">
-                                    <img id="avatar-img" alt="Avatar do Funcionário" class="w-full h-full object-cover" src="https://i.pinimg.com/736x/1d/ec/e2/1dece2c8357bdd7cee3b15036344faf5.jpg"/>
-                                </div>
-                                <label for="file-input" class="absolute bottom-0 right-0 bg-green-600 p-2 rounded-full border-4 border-surface cursor-pointer hover:bg-green-700 transition-colors shadow-sm">
-                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
-                                    </svg>
-                                </label>
-                                <input type="file" id="file-input" class="hidden" accept="image/*" onchange="trocarFoto(event)" aria-label="Trocar foto de perfil">
+                <div class="lg:col-span-4 flex flex-col gap-lg">
+                    <div class="bg-surface rounded-xl border border-outline-variant p-lg flex flex-col items-center text-center shadow-sm">
+                        <div class="relative w-32 h-32 mb-md">
+                            <div class="w-full h-full rounded-full overflow-hidden border-4 border-surface shadow-inner">
+                                <img id="avatar-img" alt="Avatar do Funcionário" class="w-full h-full object-cover" src="https://i.pinimg.com/736x/1d/ec/e2/1dece2c8357bdd7cee3b15036344faf5.jpg"/>
                             </div>
-                            <h3 class="font-headline-md text-headline-md text-on-surface"></h3> <!-- Ana Silva --> 
-                            <p class="font-body-md text-body-md text-primary mt-xs"></p> <!-- Coordenadora de Logística -->
-                            <div class="w-full mt-lg pt-lg border-t border-outline-variant">
-                                <div class="flex justify-between items-center py-xs">
-                                    <span class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</span> 
-                                    <span class="font-data-mono text-data-mono text-on-surface"></span> <!-- F-49201 -->
-                                </div>
-                                <div class="flex justify-between items-center py-xs">
-                                    <span class="font-label-caps text-label-caps text-on-surface-variant">SETOR</span>
-                                    <span class="font-body-md text-body-md text-on-surface"></span> <!-- Distribuição Central -->
-                                </div>
-                                <div class="flex justify-between items-center py-xs">
-                                    <span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
-                                    <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-1 rounded font-data-mono text-xs">Ativo</span>
-                                </div>
-                            </div>
+                            <label for="file-input" class="absolute bottom-0 right-0 bg-green-600 p-2 rounded-full border-4 border-surface cursor-pointer hover:bg-green-700 transition-colors shadow-sm">
+                                <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                </svg>
+                            </label>
+                            <input type="file" id="file-input" class="hidden" accept="image/*" onchange="trocarFoto(event)" aria-label="Trocar foto de perfil">
                         </div>
-                        <div class="bg-surface-container-low rounded-xl border border-outline-variant p-md">
-                            <div class="flex items-center gap-sm mb-sm">
-                                <span class="material-symbols-outlined icon-filled text-primary">volunteer_activism</span>
-                                <h4 class="font-headline-sm text-headline-sm text-on-surface">Mais Social</h4>
+                        <h3 id="card-nome" class="font-headline-md text-headline-md text-on-surface font-bold">Ana Silva</h3> 
+                        <p id="card-cargo" class="font-body-md text-body-md text-primary mt-xs">Coordenadora de Logística</p>
+                        
+                        <div class="w-full mt-lg pt-lg border-t border-outline-variant">
+                            <div class="flex justify-between items-center py-xs">
+                                <span class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</span> 
+                                <span id="card-matricula" class="font-data-mono text-data-mono text-on-surface font-semibold">F-49201</span>
                             </div>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant">Associação de Apoio Comunitário</p>
-                            <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">CNPJ:</p> <!-- : 00.000.000/0001-00 -->
+                            <div class="flex justify-between items-center py-xs">
+                                <span class="font-label-caps text-label-caps text-on-surface-variant">SETOR</span>
+                                <span id="card-setor" class="font-body-md text-body-md text-on-surface">Distribuição Central</span>
+                            </div>
+                            <div class="flex justify-between items-center py-xs">
+                                <span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+                                <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-1 rounded font-data-mono text-xs font-medium">Ativo</span>
+                            </div>
                         </div>
                     </div>
-                    <div class="lg:col-span-8 flex flex-col gap-lg">
-                        <div class="bg-surface rounded-xl border border-outline-variant flex flex-col">
-                            <div class="p-md border-b border-outline-variant bg-surface-container-lowest rounded-t-xl">
-                                <h4 class="font-headline-sm text-headline-sm text-on-surface">Detalhes do Funcionário</h4>
-                            </div>
-                            <div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md">
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">NOME COMPLETO</label>
-                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant"></div> <!-- Ana Cláudia Silva --><!---->
-                                </div>
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</label>
-                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- F-49201 -->
-                                </div>
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">SETOR</label>
-                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant">Distribuição Central</div>
-                                </div>
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">DATA DE ADMISSÃO</label>
-                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- 12/03/2021 -->
-                                </div>
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">EMAIL INSTITUCIONAL</label>
-                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant"></div> <!-- ana.silva@maissocial.org.br -->
-                                </div>
-                                <div class="flex flex-col gap-base">
-                                    <label class="font-label-caps text-label-caps text-on-surface-variant">HORÁRIO</label>
-                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- 08:00 - 17:00 -->
-                                </div>
-                            </div>
-            
-                            <div class="p-md border-t border-outline-variant bg-surface-container-lowest rounded-b-xl flex justify-end gap-sm">
-                                <button class="px-4 py-2 font-body-md text-body-md text-primary border border-primary rounded-lg hover:bg-primary-fixed-dim/20 transition-colors">Editar Detalhes</button>
-                            </div>
+                    
+                    <div class="bg-surface rounded-xl border border-outline-variant p-md shadow-sm">
+                        <div class="flex items-center gap-sm mb-xs">
+                            <span class="material-symbols-outlined icon-filled text-primary">volunteer_activism</span>
+                            <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Mais Social</h4>
+                        </div>
+                        <p class="font-body-sm text-body-sm text-on-surface-variant">Associação de Apoio Comunitário</p>
+                        <div class="flex items-center gap-1 mt-2 text-body-sm text-on-surface-variant">
+                            <span>CNPJ:</span>
+                            <span id="txt-cnpj" class="font-data-mono text-on-surface font-semibold">00.000.000/0001-00</span>
                         </div>
                     </div>
                 </div>
-                <script>
-                  function trocarFoto(event) {
-                    const file = event.target.files[0];
-                    if (file) {
-                        const reader = new FileReader();
-                        reader.onload = function(e) {
-                            document.getElementById('avatar-img').src = e.target.result;
-                        };
-                        reader.readAsDataURL(file);
-                    }}
-                </script>
+
+                <div class="lg:col-span-8 flex flex-col gap-lg">
+                    <div class="bg-surface rounded-xl border border-outline-variant flex flex-col shadow-sm">
+                        <div class="p-md border-b border-outline-variant bg-surface-container-lowest rounded-t-xl">
+                            <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Detalhes do Funcionário</h4>
+                        </div>
+                        
+                        <div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md" id="container-campos">
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-nome" class="font-label-caps text-label-caps text-on-surface-variant">NOME COMPLETO</label>
+                                <div id="view-nome" class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant field-view">Ana Cláudia Silva</div>
+                                <input id="edit-nome" type="text" placeholder="Nome Completo" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" value="Ana Cláudia Silva" required />
+                            </div>
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-matricula" class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</label>
+                                <div id="view-matricula" class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant field-view">F-49201</div>
+                                <input id="edit-matricula" type="text" placeholder="Matrícula" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg font-data-mono text-body-md focus:outline-none focus:border-primary" value="F-49201" required />
+                            </div>
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-setor" class="font-label-caps text-label-caps text-on-surface-variant">SETOR</label>
+                                <div id="view-setor" class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant field-view">Distribuição Central</div>
+                                <input id="edit-setor" type="text" placeholder="Setor" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" value="Distribuição Central" required />
+                            </div>
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-admissao" class="font-label-caps text-label-caps text-on-surface-variant">DATA DE ADMISSÃO</label>
+                                <div id="view-admissao" class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant field-view">12/03/2021</div>
+                                <input id="edit-admissao" type="text" placeholder="Data de Admissão" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg font-data-mono text-body-md focus:outline-none focus:border-primary" value="12/03/2021" required />
+                            </div>
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-email" class="font-label-caps text-label-caps text-on-surface-variant">EMAIL INSTITUCIONAL</label>
+                                <div id="view-email" class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant field-view">ana.silva@maissocial.org.br</div>
+                                <input id="edit-email" type="email" placeholder="Email" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" value="ana.silva@maissocial.org.br" required />
+                            </div>
+                            
+                            <div class="flex flex-col gap-base">
+                                <label for="edit-horario" class="font-label-caps text-label-caps text-on-surface-variant">HORÁRIO</label>
+                                <div id="view-horario" class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant field-view">08:00 - 17:00</div>
+                                <input id="edit-horario" type="text" placeholder="Horário de Trabalho" class="hidden w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg font-data-mono text-body-md focus:outline-none focus:border-primary" value="08:00 - 17:00" required />
+                            </div>
+
+                            <div class="flex flex-col gap-base md:col-span-2 hidden" id="wrapper-cnpj-edit">
+                                <label for="edit-cnpj" class="font-label-caps text-label-caps text-on-surface-variant">CNPJ DA INSTITUIÇÃO</label>
+                                <input id="edit-cnpj" type="text" placeholder="CNPJ" class="w-full px-3 py-1.5 bg-surface-container-low border border-outline-variant rounded-lg font-data-mono text-body-md focus:outline-none focus:border-primary" value="00.000.000/0001-00" required />
+                            </div>
+                        </div>
+            
+                        <div class="p-md border-t border-outline-variant bg-surface-container-lowest rounded-b-xl flex justify-end gap-sm">
+                            <button id="btn-cancelar" class="hidden px-4 py-2 font-body-md text-body-md text-on-surface-variant border border-outline-variant rounded-lg hover:bg-surface-variant transition-colors cursor-pointer">Cancelar</button>
+                            <button id="btn-editar" class="px-4 py-2 font-body-md text-body-md text-primary border border-primary rounded-lg hover:bg-primary-fixed-dim/20 transition-colors cursor-pointer">Editar Detalhes</button>
+                        </div>
+                    </div>
+                </div>
             </div>
+
         </div>
     </div>
 </main>
+
+<script>
+    function trocarFoto(event) {
+        const file = event.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('avatar-img').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    }
+
+    let modoEdicao = false;
+
+    const btnEditar = document.getElementById('btn-editar');
+    const btnCancelar = document.getElementById('btn-cancelar');
+    const wrapperCnpjEdit = document.getElementById('wrapper-cnpj-edit');
+
+    const camposfaturamento = [
+        { view: 'view-nome', edit: 'edit-nome' },
+        { view: 'view-matricula', edit: 'edit-matricula' },
+        { view: 'view-setor', edit: 'edit-setor' },
+        { view: 'view-admissao', edit: 'edit-admissao' },
+        { view: 'view-email', edit: 'edit-email' },
+        { view: 'view-horario', edit: 'edit-horario' }
+    ];
+
+    function alternarModo() {
+        modoEdicao = !modoEdicao;
+
+        if (modoEdicao) {
+            camposfaturamento.forEach(campo => {
+                document.getElementById(campo.view).classList.add('hidden');
+                document.getElementById(campo.edit).classList.remove('hidden');
+            });
+            wrapperCnpjEdit.classList.remove('hidden');
+            
+            btnCancelar.classList.remove('hidden');
+            btnEditar.textContent = 'Salvar Alterações';
+            btnEditar.className = "px-4 py-2 font-body-md text-body-md bg-primary text-on-primary rounded-lg hover:bg-primary-container transition-colors cursor-pointer shadow-sm";
+        } else {
+            camposfaturamento.forEach(campo => {
+                const inputVal = document.getElementById(campo.edit).value.trim();
+                const viewEl = document.getElementById(campo.view);
+                
+                viewEl.textContent = inputVal;
+                viewEl.classList.remove('hidden');
+                document.getElementById(campo.edit).classList.add('hidden');
+            });
+
+            const cnpjVal = document.getElementById('edit-cnpj').value.trim();
+            document.getElementById('txt-cnpj').textContent = cnpjVal;
+            wrapperCnpjEdit.classList.add('hidden');
+
+            document.getElementById('card-nome').textContent = document.getElementById('edit-nome').value.trim().split(' ')[0] + ' Silva';
+            document.getElementById('card-matricula').textContent = document.getElementById('edit-matricula').value.trim();
+            document.getElementById('card-setor').textContent = document.getElementById('edit-setor').value.trim();
+
+            btnCancelar.classList.add('hidden');
+            btnEditar.textContent = 'Editar Detalhes';
+            btnEditar.className = "px-4 py-2 font-body-md text-body-md text-primary border border-primary rounded-lg hover:bg-primary-fixed-dim/20 transition-all cursor-pointer";
+        }
+    }
+
+    btnEditar.addEventListener('click', () => {
+        if (modoEdicao) {
+            let formValido = true;
+            camposfaturamento.forEach(campo => {
+                if (!document.getElementById(campo.edit).checkValidity()) {
+                    formValido = false;
+                }
+            });
+            if (!document.getElementById('edit-cnpj').checkValidity()) formValido = false;
+
+            if (!formValido) {
+                alert('Por favor, preencha todos os campos corretamente.');
+                return;
+            }
+        }
+        alternarModo();
+    });
+
+    btnCancelar.addEventListener('click', () => {
+        modoEdicao = true;
+        camposfaturamento.forEach(campo => {
+            const originalVal = document.getElementById(campo.view).textContent;
+            document.getElementById(campo.edit).value = originalVal;
+        });
+        document.getElementById('edit-cnpj').value = document.getElementById('txt-cnpj').textContent;
+        alternarModo();
+    });
+</script>
 </body>
 </html>

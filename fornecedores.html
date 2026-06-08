@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>PlaniMass</title>
+    <title>PlaniMaiss</title>
     
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
@@ -23,14 +23,14 @@
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
             <div>
-                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMaiss</h1>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
             </div>
         </div>
     </div>
     <ul class="flex-1 flex flex-col gap-sm">
         <li>
-            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="index.html">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span>Painel</span>
             </a>
@@ -59,7 +59,6 @@
                 <span>Perfil do Usuário</span>
             </a>
         </li>
-        <li>
     </ul>
     <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
         <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
@@ -80,7 +79,7 @@
         </button>
         <div class="flex-1 max-w-md relative">
             <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
-            <input class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Pesquisar fornecedores por CNPJ ou Nome..." type="text"/>
+            <input id="inputBusca" class="w-full pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="Pesquisar fornecedores por CNPJ ou Nome..." type="text"/>
         </div>
         <div class="flex items-center gap-2 ml-4">
             <button class="text-on-surface-variant hover:text-primary hover:bg-surface-variant p-2 rounded-full transition-colors cursor-pointer active:scale-95">
@@ -96,7 +95,7 @@
                 <h2 class="font-headline-lg text-headline-lg text-on-surface">Fornecedores</h2>
                 <p class="font-body-md text-body-md text-on-surface-variant mt-1">Gerencie detalhes de fornecedores, informações de contato e registros de CNPJ.</p>
             </div>
-            <button class="bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm">
+            <button id="btnNovoFornecedor" class="bg-primary hover:bg-primary-container text-on-primary font-body-md text-body-md py-2 px-4 rounded-lg flex items-center gap-2 transition-colors shadow-sm cursor-pointer">
                 <span class="material-symbols-outlined text-sm">add</span> Novo Fornecedor
             </button>
         </div>
@@ -114,67 +113,12 @@
                             <th class="px-3 py-2 border-b border-outline-variant bg-primary-fixed-dim/10 text-primary font-label-caps text-label-caps w-[100px] shadow-[0_4px_6px_-1px_rgba(0,0,0,0.05)] text-center">Ações</th>
                         </tr>
                     </thead>
-                    <tbody class="font-data-mono text-data-mono text-on-surface bg-surface-container-lowest">
-                        <tr class="hover:bg-primary-fixed-dim/5 transition-colors group cursor-default">
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant"></td> <!-- 12.345.678/0001-90 --> <!---->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- Papelaria e CIA Ltda -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- (11) 98765-4321 -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-primary hover:underline cursor-pointer"></td> <!-- contato@papelariacia.com -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant truncate max-w-[200px]" title="Rua das Flores, 123 - Centro, São Paulo - SP"></td> <!-- Rua das Flores, 123 - Centro, São Paulo - SP -->
-                            <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded" title="Editar"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="p-1 text-on-surface-variant hover:text-error hover:bg-error-container rounded" title="Excluir"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-primary-fixed-dim/5 transition-colors group cursor-default bg-surface-container-low/30">
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant"></td> <!-- 12.345.678/0001-90 --> <!---->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- Papelaria e CIA Ltda -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- (11) 98765-4321 -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-primary hover:underline cursor-pointer"></td> <!-- contato@papelariacia.com -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant truncate max-w-[200px]" title="Rua das Flores, 123 - Centro, São Paulo - SP"></td> <!-- Rua das Flores, 123 - Centro, São Paulo - SP -->
-                            <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded" title="Editar"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="p-1 text-on-surface-variant hover:text-error hover:bg-error-container rounded" title="Excluir"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-primary-fixed-dim/5 transition-colors group cursor-default">
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant"></td> <!-- 12.345.678/0001-90 --> <!---->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- Papelaria e CIA Ltda -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- (11) 98765-4321 -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-primary hover:underline cursor-pointer"></td> <!-- contato@papelariacia.com -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant truncate max-w-[200px]" title="Rua das Flores, 123 - Centro, São Paulo - SP"></td> <!-- Rua das Flores, 123 - Centro, São Paulo - SP -->
-                            <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded" title="Editar"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="p-1 text-on-surface-variant hover:text-error hover:bg-error-container rounded" title="Excluir"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr class="hover:bg-primary-fixed-dim/5 transition-colors group cursor-default bg-surface-container-low/30">
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant"></td> <!-- 12.345.678/0001-90 --> <!---->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- Papelaria e CIA Ltda -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant"></td> <!-- (11) 98765-4321 -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant text-primary hover:underline cursor-pointer"></td> <!-- contato@papelariacia.com -->
-                            <td class="px-3 py-2 border-b border-r border-outline-variant truncate max-w-[200px]" title="Rua das Flores, 123 - Centro, São Paulo - SP"></td> <!-- Rua das Flores, 123 - Centro, São Paulo - SP -->
-                            <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
-                                    <button class="p-1 text-on-surface-variant hover:text-primary hover:bg-surface-variant rounded" title="Editar"><span class="material-symbols-outlined text-sm">edit</span></button>
-                                    <button class="p-1 text-on-surface-variant hover:text-error hover:bg-error-container rounded" title="Excluir"><span class="material-symbols-outlined text-sm">delete</span></button>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-outline-variant"></td></tr>
-                        <tr><td class="px-3 py-3 border-b border-r border-outline-variant bg-surface-container-low/30"></td><td class="px-3 py-3 border-b border-r border-outline-variant bg-surface-container-low/30"></td><td class="px-3 py-3 border-b border-r border-outline-variant bg-surface-container-low/30"></td><td class="px-3 py-3 border-b border-r border-outline-variant bg-surface-container-low/30"></td><td class="px-3 py-3 border-b border-r border-outline-variant bg-surface-container-low/30"></td><td class="px-3 py-3 border-b border-outline-variant bg-surface-container-low/30"></td></tr>
-                        <tr><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-outline-variant"></td></tr>
-                    </tbody>
+                    <tbody id="tabelaFornecedores" class="font-data-mono text-data-mono text-on-surface bg-surface-container-lowest">
+                        </tbody>
                 </table>
             </div>
             <div class="border-t border-outline-variant bg-surface p-2 flex justify-between items-center shrink-0">
-                <span class="font-body-sm text-body-sm text-on-surface-variant pl-2">Exibindo 4 de 24 fornecedores</span>
+                <span id="textoPaginacao" class="font-body-sm text-body-sm text-on-surface-variant pl-2">Exibindo 0 fornecedores</span>
                 <div class="flex gap-1">
                     <button class="p-1 text-on-surface-variant hover:bg-surface-variant rounded" disabled="">
                         <span class="material-symbols-outlined text-sm">chevron_left</span>
@@ -187,5 +131,164 @@
         </div>
     </div>
 </main>
+
+<div id="modalFornecedor" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden backdrop-blur-sm">
+    <div class="bg-surface rounded-xl border border-outline-variant max-w-md w-full p-lg shadow-xl mx-4 animate-[fadeIn_0.2s_ease-out]">
+        <div class="flex justify-between items-center mb-md">
+            <h3 class="font-headline-md text-headline-sm text-on-surface font-bold">Cadastrar Fornecedor</h3>
+            <button id="btnFecharModal" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant cursor-pointer">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <form id="formFornecedor" class="flex flex-col gap-4">
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="cnpj">CNPJ *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="cnpj" placeholder="12.345.678/0001-90" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="nome">Nome *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="nome" placeholder="Papelaria e CIA Ltda" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="numero">Número/Telefone</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="numero" placeholder="(11) 98765-4321">
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="email">Email</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="email" id="email" placeholder="contato@empresa.com">
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="endereco">Endereço</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="endereco" placeholder="Rua das Flores, 123 - Centro">
+            </div>
+            <div class="flex justify-end gap-2 mt-2">
+                <button type="button" id="btnCancelar" class="px-4 py-2 border border-outline-variant text-on-surface-variant hover:bg-surface-variant rounded-lg text-body-md transition-colors cursor-pointer">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-primary hover:bg-primary-container text-on-primary rounded-lg text-body-md font-medium transition-colors cursor-pointer">Salvar</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // Banco de dados em memória inicializado com alguns exemplos baseados no seu HTML original
+    let fornecedores = [
+        { cnpj: '12.345.678/0001-90', nome: 'Papelaria e CIA Ltda', numero: '(11) 98765-4321', email: 'contato@papelariacia.com', endereco: 'Rua das Flores, 123 - Centro, São Paulo - SP' },
+        { cnpj: '98.765.432/0001-10', nome: 'Distribuidora Alvorada', numero: '(21) 99999-8888', email: 'vendas@alvorada.com', endereco: 'Av. Brasil, 1500 - Rio de Janeiro - RJ' }
+    ];
+
+    // Elementos do DOM
+    const modal = document.getElementById('modalFornecedor');
+    const btnNovoFornecedor = document.getElementById('btnNovoFornecedor');
+    const btnFecharModal = document.getElementById('btnFecharModal');
+    const btnCancelar = document.getElementById('btnCancelar');
+    const formFornecedor = document.getElementById('formFornecedor');
+    const tabelaBody = document.getElementById('tabelaFornecedores');
+    const textoPaginacao = document.getElementById('textoPaginacao');
+    const inputBusca = document.getElementById('inputBusca');
+
+    // Função para abrir o Modal
+    btnNovoFornecedor.addEventListener('click', () => {
+        formFornecedor.reset();
+        modal.classList.remove('hidden');
+    });
+
+    // Função para fechar o Modal
+    const fecharModal = () => modal.classList.add('hidden');
+    btnFecharModal.addEventListener('click', fecharModal);
+    btnCancelar.addEventListener('click', fecharModal);
+
+    // Renderizar Tabela na tela
+    function renderizarTabela(dadosParaRenderizar = fornecedores) {
+        tabelaBody.innerHTML = '';
+        
+        if (dadosParaRenderizar.length === 0) {
+            tabelaBody.innerHTML = `
+                <tr>
+                    <td colspan="6" class="px-3 py-8 text-center text-on-surface-variant font-body-md">Nenhum fornecedor cadastrado ou encontrado.</td>
+                </tr>
+            `;
+            textoPaginacao.textContent = `Exibindo 0 fornecedores`;
+            return;
+        }
+
+        dadosParaRenderizar.forEach((fornecedor, index) => {
+            const tr = document.createElement('tr');
+            // Zebrado alternado usando as classes do seu design original
+            const bgClass = index % 2 === 1 ? 'bg-surface-container-low/30' : '';
+            tr.className = `hover:bg-primary-fixed-dim/5 transition-colors group cursor-default ${bgClass}`;
+
+            tr.innerHTML = `
+                <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">${fornecedor.cnpj}</td>
+                <td class="px-3 py-2 border-b border-r border-outline-variant font-medium">${fornecedor.nome}</td>
+                <td class="px-3 py-2 border-b border-r border-outline-variant">${fornecedor.numero || '-'}</td>
+                <td class="px-3 py-2 border-b border-r border-outline-variant text-primary hover:underline cursor-pointer">${fornecedor.email || '-'}</td>
+                <td class="px-3 py-2 border-b border-r border-outline-variant truncate max-w-[200px]" title="${fornecedor.endereco}">${fornecedor.endereco || '-'}</td>
+                <td class="px-3 py-2 border-b border-outline-variant text-center">
+                    <div class="flex items-center justify-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="excluirFornecedor('${fornecedor.cnpj}')" class="p-1 text-on-surface-variant hover:text-error hover:bg-error-container rounded cursor-pointer" title="Excluir">
+                            <span class="material-symbols-outlined text-sm">delete</span>
+                        </button>
+                    </div>
+                </td>
+            `;
+            tabelaBody.appendChild(tr);
+        });
+
+        // Adiciona 2 linhas vazias puramente estéticas ao final caso a lista seja pequena (mantendo o estilo visual original)
+        for(let i=0; i<2; i++) {
+            const linhaVazia = document.createElement('tr');
+            linhaVazia.innerHTML = `<td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-r border-outline-variant"></td><td class="px-3 py-3 border-b border-outline-variant"></td>`;
+            tabelaBody.appendChild(linhaVazia);
+        }
+
+        textoPaginacao.textContent = `Exibindo ${dadosParaRenderizar.length} de ${dadosParaRenderizar.length} fornecedores`;
+    }
+
+    // Ação de Submit do Formulário
+    formFornecedor.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const novoCNPJ = document.getElementById('cnpj').value.trim();
+        
+        // Validação simples de chave primária duplicada (CNPJ PK)
+        if (fornecedores.some(f => f.cnpj === novoCNPJ)) {
+            alert('Este CNPJ já está cadastrado como fornecedor!');
+            return;
+        }
+
+        const novoFornecedor = {
+            cnpj: novoCNPJ,
+            nome: document.getElementById('nome').value.trim(),
+            numero: document.getElementById('numero').value.trim(),
+            email: document.getElementById('email').value.trim(),
+            endereco: document.getElementById('endereco').value.trim()
+        };
+
+        fornecedores.unshift(novoFornecedor); // Adiciona no início da lista
+        fecharModal();
+        renderizarTabela();
+    });
+
+    // Função para Excluir fornecedor
+    function excluirFornecedor(cnpj) {
+        if(confirm(`Tem certeza que deseja remover o fornecedor com CNPJ ${cnpj}?`)) {
+            fornecedores = fornecedores.filter(f => f.cnpj !== cnpj);
+            renderizarTabela();
+        }
+    }
+
+    // Funcionalidade do Input de Pesquisa do Header
+    inputBusca.addEventListener('input', (e) => {
+        const termo = e.target.value.toLowerCase();
+        const filtrados = fornecedores.filter(f => 
+            f.nome.toLowerCase().includes(termo) || 
+            f.cnpj.toLowerCase().includes(termo)
+        );
+        renderizarTabela(filtrados);
+    });
+
+    // Inicialização ao carregar a página
+    renderizarTabela();
+</script>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>PlaniMass</title>
+    <title>PlaniMaiss</title>
     
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     
@@ -23,14 +23,14 @@
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
             <div>
-                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMaiss</h1>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
             </div>
         </div>
     </div>
     <ul class="flex-1 flex flex-col gap-sm">
         <li>
-            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="index.html">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span>Painel</span>
             </a>
@@ -59,7 +59,6 @@
                 <span>Perfil do Usuário</span>
             </a>
         </li>
-        <li>
     </ul>
     <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
         <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
@@ -101,11 +100,7 @@
                 <p class="font-body-md text-body-md text-on-surface-variant mt-1">Gerencie itens físicos e recursos.</p>
             </div>
             <div class="flex gap-3 w-full sm:w-auto">
-                <button class="flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-data-mono text-data-mono text-on-surface hover:bg-surface-variant transition-colors flex-1 sm:flex-none">
-                    <span class="material-symbols-outlined text-sm">filter_list</span>
-                    Filtrar
-                </button>
-                <button class="flex items-center justify-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed font-data-mono text-data-mono font-bold rounded-lg hover:bg-tertiary-fixed-dim transition-colors shadow-sm flex-1 sm:flex-none">
+                <button id="btn-adicionar-item" class="flex items-center justify-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed font-data-mono text-data-mono font-bold rounded-lg hover:bg-tertiary-fixed-dim transition-colors shadow-sm flex-1 sm:flex-none">
                     <span class="material-symbols-outlined text-sm">add</span>
                     Adicionar Item
                 </button>
@@ -113,6 +108,41 @@
         </div>
 
         <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col max-h-[calc(100vh-200px)]">
+            
+            <div id="novo-item-form" class="hidden p-4 border-b border-outline-variant bg-surface-container">
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                    <div>
+                        <label for="id_item_input" class="block text-sm mb-1 font-medium">ID Item</label>
+                        <input id="id_item_input" type="text" class="w-full p-2 border border-outline-variant rounded-lg bg-surface text-on-surface disabled:opacity-50 disabled:bg-surface-container-low">
+                    </div>
+                    <div>
+                        <label for="nome_item_input" class="block text-sm mb-1 font-medium">Nome</label>
+                        <input id="nome_item_input" type="text" class="w-full p-2 border border-outline-variant rounded-lg bg-surface text-on-surface">
+                    </div>
+                    <div>
+                        <label for="tipo_item_select" class="block text-sm mb-1 font-medium">Tipo</label>
+                        <select id="tipo_item_select" aria-label="Selecione o tipo do item" class="w-full p-2 border border-outline-variant rounded-lg bg-surface text-on-surface">
+                            <option>Alimento</option>
+                            <option>Educação</option>
+                            <option>Saúde</option>
+                            <option>Higiene</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="descricao_item_input" class="block text-sm mb-1 font-medium">Descrição</label>
+                        <input id="descricao_item_input" type="text" class="w-full p-2 border border-outline-variant rounded-lg bg-surface text-on-surface">
+                    </div>
+                </div>
+                <div class="flex justify-end gap-3 mt-4">
+                    <button id="cancelar-item" class="px-4 py-2 border border-outline-variant rounded-lg text-on-surface hover:bg-surface-variant/30 transition-colors">
+                        Cancelar
+                    </button>
+                    <button id="salvar-item" class="px-4 py-2 bg-primary text-on-primary rounded-lg hover:bg-primary/90 transition-colors">
+                        Salvar Item
+                    </button>
+                </div>
+            </div>
+
             <div class="p-3 border-b border-outline-variant bg-surface-container flex flex-wrap gap-3 items-center justify-between">
                 <div class="flex gap-2 items-center text-sm">
                     <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Visualizações:</span>
@@ -141,7 +171,7 @@
                             <th class="p-3 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low w-[80px] text-center">Ação</th>
                         </tr>
                     </thead>
-                    <tbody class="font-data-mono text-data-mono">
+                    <tbody id="tabela-itens-corpo" class="font-data-mono text-data-mono">
                         <tr class="hover:bg-primary/5 transition-colors group">
                             <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">ITM-001</td>
                             <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface font-medium flex items-center gap-2">Cesta Básica</td>
@@ -150,7 +180,7 @@
                             </td>
                             <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Kit de alimentos não perecíveis tipo A">Kit de alimentos não perecíveis tipo A</td>
                             <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                <button data-acao="editar" class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
                                     <span class="material-symbols-outlined text-[20px]">edit</span>
                                 </button>
                             </td>
@@ -163,7 +193,7 @@
                             </td>
                             <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Caderno 10 matérias espiral">Caderno 10 matérias espiral</td>
                             <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                <button data-acao="editar" class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
                                     <span class="material-symbols-outlined text-[20px]">edit</span>
                                 </button>
                             </td>
@@ -176,7 +206,7 @@
                             </td>
                             <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Cadeira de rodas manual adulto">Cadeira de rodas manual adulto</td>
                             <td class="px-3 py-2 border-b border-outline-variant text-center">
-                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                <button data-acao="editar" class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
                                     <span class="material-symbols-outlined text-[20px]">edit</span>
                                 </button>
                             </td>
@@ -186,7 +216,7 @@
             </div>
             
             <div class="p-2 border-t border-outline-variant bg-surface-container flex items-center justify-between text-body-sm font-body-sm">
-                <span class="text-on-surface-variant">3 itens</span>
+                <span id="total-itens" class="text-on-surface-variant">3 itens</span>
                 <div class="flex items-center gap-4">
                     <button class="text-on-surface-variant hover:text-primary disabled:opacity-50" disabled="">
                         <span class="material-symbols-outlined">chevron_left</span>
@@ -202,13 +232,21 @@
         <div class="mt-8">
             <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 flex items-center gap-2">
                 <span class="material-symbols-outlined text-primary">local_shipping</span>
-                Entregas de Fornecedores (Fornecedor_Item)
+                Entregas de Fornecedores
             </h3>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
                 
                 <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm col-span-1">
                     <h4 class="font-body-lg text-body-lg font-medium text-on-surface mb-4 border-b border-outline-variant pb-2">Registrar Entrega</h4>
-                    <form class="space-y-4">
+                    <form id="form-registrar-entrega" class="space-y-4">
+                        <div>
+                            <label for="entrega_item_select" class="block font-label-caps text-label-caps text-on-surface-variant mb-1">Item Relacionado</label>
+                            <select id="entrega_item_select" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all">
+                                <option value="ITM-001">ITM-001 (Cesta Básica)</option>
+                                <option value="ITM-002">ITM-002 (Caderno Universitário)</option>
+                                <option value="ITM-003">ITM-003 (Cadeira de Rodas)</option>
+                            </select>
+                        </div>
                         <div>
                             <label for="nota_fiscal_input" class="block font-label-caps text-label-caps text-on-surface-variant mb-1">nota_fiscal</label>
                             <input id="nota_fiscal_input" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ex. 123456789" type="text"/>
@@ -223,7 +261,7 @@
                                 <input id="quantidade_input" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="0" type="number"/>
                             </div>
                         </div>
-                        <button class="w-full py-2 bg-primary text-on-primary font-body-md text-body-md font-medium rounded-lg hover:bg-primary-container transition-colors mt-2" type="button">
+                        <button id="btn-salvar-entrega" class="w-full py-2 bg-primary text-on-primary font-body-md text-body-md font-medium rounded-lg hover:bg-primary-container transition-colors mt-2" type="button">
                             Salvar Registro
                         </button>
                     </form>
@@ -243,7 +281,7 @@
                                     <th class="px-4 py-2 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant text-right">Qtd</th>
                                 </tr>
                             </thead>
-                            <tbody class="font-data-mono text-data-mono">
+                            <tbody id="tabela-recebimentos-corpo" class="font-data-mono text-data-mono">
                                 <tr class="hover:bg-surface-variant/50 border-b border-outline-variant/50 last:border-0">
                                     <td class="px-4 py-3 text-on-surface font-medium">ITM-001</td>
                                     <td class="px-4 py-3 text-on-surface-variant">NF-998234</td>
@@ -264,5 +302,159 @@
         </div>
     </main>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // === 1. GESTÃO DE ITENS (INVENTÁRIO) ===
+    const btnAdicionar = document.getElementById('btn-adicionar-item');
+    const formNovoItem = document.getElementById('novo-item-form');
+    const btnCancelar = document.getElementById('cancelar-item');
+    const btnSalvar = document.getElementById('salvar-item');
+    const tabelaCorpo = document.getElementById('tabela-itens-corpo');
+    const totalItensElement = document.getElementById('total-itens');
+
+    const inputId = document.getElementById('id_item_input');
+    const inputNome = document.getElementById('nome_item_input');
+    const selectTipo = document.getElementById('tipo_item_select');
+    const inputDescricao = document.getElementById('descricao_item_input');
+
+    let linhaSendoEditada = null;
+
+    btnAdicionar.addEventListener('click', () => {
+        linhaSendoEditada = null;
+        limparFormulario();
+        inputId.disabled = false;
+        btnSalvar.textContent = "Salvar Item";
+        formNovoItem.classList.remove('hidden');
+    });
+
+    btnCancelar.addEventListener('click', () => {
+        formNovoItem.classList.add('hidden');
+        limparFormulario();
+    });
+
+    tabelaCorpo.addEventListener('click', (evento) => {
+        const botaoEditar = evento.target.closest('button[data-acao="editar"]');
+        if (!botaoEditar) return;
+
+        linhaSendoEditada = botaoEditar.closest('tr');
+
+        const celulas = linhaSendoEditada.querySelectorAll('td');
+        const idAtual = celulas[0].textContent.trim();
+        const nomeAtual = celulas[1].textContent.trim();
+        const tipoAtual = celulas[2].querySelector('span').textContent.trim();
+        const descricaoAtual = celulas[3].textContent.trim();
+
+        inputId.value = idAtual;
+        inputId.disabled = true;
+        inputNome.value = nomeAtual;
+        selectTipo.value = tipoAtual;
+        inputDescricao.value = descricaoAtual;
+
+        btnSalvar.textContent = "Atualizar Item";
+        formNovoItem.classList.remove('hidden');
+        formNovoItem.scrollIntoView({ behavior: 'smooth' });
+    });
+
+    btnSalvar.addEventListener('click', () => {
+        const idItem = inputId.value.trim();
+        const nomeItem = inputNome.value.trim();
+        const tipoItem = selectTipo.value;
+        const descricaoItem = inputDescricao.value.trim();
+
+        if (!idItem || !nomeItem) {
+            alert('Por favor, preencha pelo menos o ID e o Nome do item.');
+            return;
+        }
+
+        let badgeClass = "bg-secondary-container/20 text-on-secondary-container border border-secondary-container/30";
+        if (tipoItem === "Educação") badgeClass = "bg-primary-container/20 text-black border border-primary-container/30";
+        if (tipoItem === "Saúde") badgeClass = "bg-tertiary-container/20 text-black border border-tertiary-container/30";
+        if (tipoItem === "Higiene") badgeClass = "bg-outline-variant text-on-surface border border-outline";
+
+        const conteudoLinhaHTML = `
+            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">${idItem}</td>
+            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface font-medium flex items-center gap-2">${nomeItem}</td>
+            <td class="px-3 py-2 border-b border-r border-outline-variant">
+                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${badgeClass}">${tipoItem}</span>
+            </td>
+            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="${descricaoItem}">${descricaoItem}</td>
+            <td class="px-3 py-2 border-b border-outline-variant text-center">
+                <button data-acao="editar" class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                </button>
+            </td>
+        `;
+
+        if (linhaSendoEditada) {
+            linhaSendoEditada.innerHTML = conteudoLinhaHTML;
+            linhaSendoEditada = null;
+        } else {
+            const novaLinha = document.createElement('tr');
+            novaLinha.className = 'hover:bg-primary/5 transition-colors group';
+            novaLinha.innerHTML = conteudoLinhaHTML;
+            tabelaCorpo.insertBefore(novaLinha, tabelaCorpo.firstChild);
+        }
+
+        if (totalItensElement) {
+            const qtdAtual = tabelaCorpo.querySelectorAll('tr').length;
+            totalItensElement.textContent = `${qtdAtual} itens`;
+        }
+
+        formNovoItem.classList.add('hidden');
+        limparFormulario();
+    });
+
+    function limparFormulario() {
+        inputId.value = '';
+        inputNome.value = '';
+        selectTipo.selectedIndex = 0;
+        inputDescricao.value = '';
+    }
+
+    // === 2. GESTÃO DE ENTREGAS (RECEBIMENTOS RECENTES) ===
+    const selectEntregaItem = document.getElementById('entrega_item_select');
+    const inputNotaFiscal = document.getElementById('nota_fiscal_input');
+    const inputDataEntrada = document.getElementById('data_entrada_input');
+    const inputQuantidade = document.getElementById('quantidade_input');
+    const btnSalvarEntrega = document.getElementById('btn-salvar-entrega');
+    const tabelaRecebimentosCorpo = document.getElementById('tabela-recebimentos-corpo');
+
+    btnSalvarEntrega.addEventListener('click', () => {
+        const itemSelecionado = selectEntregaItem.value;
+        const notaFiscal = inputNotaFiscal.value.trim();
+        const dataEntrada = inputDataEntrada.value;
+        const quantidade = inputQuantidade.value.trim();
+
+        // Validação básica de campos obrigatórios
+        if (!notaFiscal || !dataEntrada || !quantidade) {
+            alert('Por favor, preencha todos os campos para registrar a entrega.');
+            return;
+        }
+
+        // Formata a data obtida do input (AAAA-MM-DD) para o padrão brasileiro (DD/MM/AAAA)
+        const dataFormatada = dataEntrada.split('-').reverse().join('/');
+
+        // Estrutura a nova linha mantendo as classes e o padrão visual original do design
+        const novaLinhaEntrega = document.createElement('tr');
+        novaLinhaEntrega.className = 'hover:bg-surface-variant/50 border-b border-outline-variant/50 last:border-0';
+        novaLinhaEntrega.innerHTML = `
+            <td class="px-4 py-3 text-on-surface font-medium">${itemSelecionado}</td>
+            <td class="px-4 py-3 text-on-surface-variant">NF-${notaFiscal}</td>
+            <td class="px-4 py-3 text-on-surface-variant">${dataFormatada}</td>
+            <td class="px-4 py-3 text-right text-primary font-medium">+${quantidade}</td>
+        `;
+
+        // Insere o novo elemento sempre na primeira posição (topo) da tabela de recebimentos
+        tabelaRecebimentosCorpo.insertBefore(novaLinhaEntrega, tabelaRecebimentosCorpo.firstChild);
+
+        // Limpa e reseta os inputs do formulário de entrega
+        inputNotaFiscal.value = '';
+        inputDataEntrada.value = '';
+        inputQuantidade.value = '';
+        selectEntregaItem.selectedIndex = 0;
+    });
+});
+</script>
 </body>
 </html>

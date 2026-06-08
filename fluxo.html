@@ -1,12 +1,10 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
-
 <head>
     <meta charset="utf-8"/>
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
 
-    <title>PlaniMass</title>
+    <title>PlaniMaiss</title>
 
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script src="tailwind-config.js"></script>
@@ -24,7 +22,7 @@
         <div class="flex items-center gap-3">
             <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
             <div>
-                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMaiss</h1>
                 <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
             </div>
         </div>
@@ -32,7 +30,7 @@
 
     <ul class="flex-1 flex flex-col gap-sm">
         <li>
-            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="index.html">
                 <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
                 <span>Painel</span>
             </a>
@@ -83,7 +81,7 @@
             </button>
             <div class="relative hidden sm:block">
                 <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
-                <input class="pl-10 pr-4 py-1.5 bg-surface-container border border-outline-variant rounded-full text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Pesquisar saídas..." type="text"/>
+                <input id="inputBuscaSaidas" class="pl-10 pr-4 py-1.5 bg-surface-container border border-outline-variant rounded-full text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Pesquisar por ID, Matrícula..." type="text"/>
             </div>
         </div>
         <div class="flex items-center gap-sm">
@@ -103,11 +101,7 @@
                 <p class="font-body-md text-body-md text-on-surface-variant mt-1">Acompanhe e gerencie a distribuição de itens e solicitações.</p>
             </div>
             <div class="flex gap-sm w-full sm:w-auto">
-                <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-lg py-2 bg-surface border border-primary text-primary rounded font-body-md font-medium hover:bg-primary/5 transition-colors">
-                    <span class="material-symbols-outlined text-[18px]">filter_list</span>
-                    Filtrar
-                </button>
-                <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-lg py-2 bg-primary text-on-primary rounded font-body-md font-medium hover:bg-primary-container transition-colors shadow-sm">
+                <button id="btnNovaSaida" class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-lg py-2 bg-primary text-on-primary rounded font-body-md font-medium hover:bg-primary-container transition-colors shadow-sm cursor-pointer">
                     <span class="material-symbols-outlined text-[18px]">add</span>
                     Nova Saída
                 </button>
@@ -135,76 +129,12 @@
                                 <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Ações</th>
                             </tr>
                         </thead>
-                        <tbody class="font-data-mono text-data-mono text-on-surface bg-surface-container-lowest">
-                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group">
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-tertiary-container">Concluído</span>
-                                </td>
-                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
-                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
-                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
-                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group bg-surface-container-low/30">
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed text-on-secondary-container">Pendente</span>
-                                </td>
-                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
-                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
-                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
-                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group">
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-tertiary-container">Concluído</span>
-                                </td>
-                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
-                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
-                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
-                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group bg-surface-container-low/30">
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant">Arquivado</span>
-                                </td>
-                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
-                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
-                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
-                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
-                                <td class="py-[8px] px-[12px] text-center">
-                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
-                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
-                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
-                                    </div>
-                                </td>
-                            </tr>
-                        </tbody>
+                        <tbody id="tabelaSaidas" class="font-data-mono text-data-mono text-on-surface bg-surface-container-lowest">
+                            </tbody>
                     </table>
                 </div>
                 <div class="p-sm bg-surface-container-lowest border-t border-outline-variant flex justify-between items-center text-body-sm text-on-surface-variant">
-                    <span>Exibindo 4 de 128 registros</span>
+                    <span id="textoPaginacao">Exibindo 0 registros</span>
                     <div class="flex gap-xs">
                         <button class="p-1 hover:bg-surface-variant rounded disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
                         <button class="p-1 hover:bg-surface-variant rounded"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
@@ -261,6 +191,179 @@
     </main>
 </div>
 
-</body>
-</html> 
+<div id="modalSaida" class="fixed inset-0 bg-black/50 z-50 flex items-center justify-center hidden backdrop-blur-sm">
+    <div class="bg-surface rounded-xl border border-outline-variant max-w-md w-full p-lg shadow-xl mx-4 animate-[fadeIn_0.2s_ease-out]">
+        <div class="flex justify-between items-center mb-md">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Registrar Nova Saída</h3>
+            <button id="btnFecharModal" class="p-1 rounded-full text-on-surface-variant hover:bg-surface-variant cursor-pointer">
+                <span class="material-symbols-outlined">close</span>
+            </button>
+        </div>
+        <form id="formSaida" class="flex flex-col gap-4">
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="statusSaida">Status *</label>
+                <select id="statusSaida" class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" required>
+                    <option value="Concluído">Concluído</option>
+                    <option value="Pendente">Pendente</option>
+                    <option value="Arquivado">Arquivado</option>
+                </select>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="idItem">ID do Item *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="idItem" placeholder="Ex: ITM-4029" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="matFuncionario">Matrícula Funcionário *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="matFuncionario" placeholder="Ex: MAT-88210" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="matResponsavel">Matrícula Responsável *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="text" id="matResponsavel" placeholder="Ex: RESP-001" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="qtdSaida">Quantidade Saída *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="number" id="qtdSaida" placeholder="Ex: 150" min="1" required>
+            </div>
+            <div>
+                <label class="block text-body-sm font-medium text-on-surface-variant mb-1" for="dataSaida">Data de Saída *</label>
+                <input class="w-full px-3 py-2 bg-surface-container-low border border-outline-variant rounded-lg text-body-md focus:outline-none focus:border-primary" type="date" id="dataSaida" required>
+            </div>
+            <div class="flex justify-end gap-2 mt-2">
+                <button type="button" id="btnCancelar" class="px-4 py-2 border border-outline-variant text-on-surface-variant hover:bg-surface-variant rounded-lg text-body-md transition-colors cursor-pointer">Cancelar</button>
+                <button type="submit" class="px-4 py-2 bg-primary hover:bg-primary-container text-on-primary rounded-lg text-body-md font-medium transition-colors cursor-pointer">Salvar Registro</button>
+            </div>
+        </form>
+    </div>
+</div>
 
+<script>
+    // Inicialização do array de registros (Baseado nos seus comentários originais)
+    let registrosSaidas = [
+        { status: 'Concluído', idItem: 'ITM-4029', matriculaFunc: 'MAT-88210', matriculaResp: 'RESP-001', qtd: '150', data: '24/10/2023' },
+        { status: 'Pendente', idItem: 'ITM-5011', matriculaFunc: 'MAT-12450', matriculaResp: 'RESP-001', qtd: '45', data: '25/10/2023' },
+        { status: 'Concluído', idItem: 'ITM-3022', matriculaFunc: 'MAT-33219', matriculaResp: 'RESP-002', qtd: '200', data: '26/10/2023' },
+        { status: 'Arquivado', idItem: 'ITM-1092', matriculaFunc: 'MAT-55412', matriculaResp: 'RESP-003', qtd: '10', data: '27/10/2023' }
+    ];
+
+    // Mapeamento visual das badges de status conforme as classes de cores do seu layout
+    const statusBadges = {
+        'Concluído': 'bg-tertiary-fixed text-tertiary-container',
+        'Pendente': 'bg-secondary-fixed text-on-secondary-container',
+        'Arquivado': 'bg-surface-variant text-on-surface-variant'
+    };
+
+    // Referências do DOM
+    const modal = document.getElementById('modalSaida');
+    const btnNovaSaida = document.getElementById('btnNovaSaida');
+    const btnFecharModal = document.getElementById('btnFecharModal');
+    const btnCancelar = document.getElementById('btnCancelar');
+    const formSaida = document.getElementById('formSaida');
+    const tabelaBody = document.getElementById('tabelaSaidas');
+    const textoPaginacao = document.getElementById('textoPaginacao');
+    const inputBusca = document.getElementById('inputBuscaSaidas');
+
+    // Abrir modal e preencher com a data atual por conveniência
+    btnNovaSaida.addEventListener('click', () => {
+        formSaida.reset();
+        document.getElementById('dataSaida').valueAsDate = new Date();
+        modal.classList.remove('hidden');
+    });
+
+    // Fechar modal
+    const fecharModal = () => modal.classList.add('hidden');
+    btnFecharModal.addEventListener('click', fecharModal);
+    btnCancelar.addEventListener('click', fecharModal);
+
+    // Renderizador Dinâmico da Tabela
+    function renderizarTabela(dados = registrosSaidas) {
+        tabelaBody.innerHTML = '';
+
+        if (dados.length === 0) {
+            tabelaBody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="py-8 text-center text-on-surface-variant font-body-md">Nenhuma saída registrada ou encontrada.</td>
+                </tr>
+            `;
+            textoPaginacao.textContent = 'Exibindo 0 registros';
+            return;
+        }
+
+        dados.forEach((registro, index) => {
+            const tr = document.createElement('tr');
+            // Zebrado mantendo o estilo visual original (bg-surface-container-low/30 nas ímpares)
+            const bgClass = index % 2 === 1 ? 'bg-surface-container-low/30' : '';
+            tr.className = `hover:bg-primary/2 border-b border-outline-variant transition-colors group ${bgClass}`;
+
+            // Determinar o badge correto
+            const badgeColor = statusBadges[registro.status] || 'bg-surface-variant';
+
+            tr.innerHTML = `
+                <td class="py-[8px] px-[12px] text-center">
+                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium ${badgeColor}">${registro.status}</span>
+                </td>
+                <td class="py-[8px] px-[12px] text-primary text-center font-semibold">${registro.idItem}</td>
+                <td class="py-[8px] px-[12px] text-center">${registro.matriculaFunc}</td>
+                <td class="py-[8px] px-[12px] text-center">${registro.matriculaResp}</td>
+                <td class="py-[8px] px-[12px] text-center font-medium">${registro.qtd}</td>
+                <td class="py-[8px] px-[12px] text-center text-on-surface-variant">${registro.data}</td>
+                <td class="py-[8px] px-[12px] text-center">
+                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="excluirSaida(${index})" class="p-1 text-on-surface-variant hover:text-error rounded cursor-pointer" title="Excluir">
+                            <span class="material-symbols-outlined text-[18px]">delete</span>
+                        </button>
+                    </div>
+                </td>
+            `;
+            tabelaBody.appendChild(tr);
+        });
+
+        textoPaginacao.textContent = `Exibindo ${dados.length} de ${dados.length} registros`;
+    }
+
+    // Processar o envio do formulário (Inserir novo registro)
+    formSaida.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        // Conversão simples de data AAAA-MM-DD para DD/MM/AAAA para exibição limpa
+        const rawDate = document.getElementById('dataSaida').value.split('-');
+        const dataFormatada = rawDate.length === 3 ? `${rawDate[2]}/${rawDate[1]}/${rawDate[0]}` : '';
+
+        const novoRegistro = {
+            status: document.getElementById('statusSaida').value,
+            idItem: document.getElementById('idItem').value.trim().toUpperCase(),
+            matriculaFunc: document.getElementById('matFuncionario').value.trim().toUpperCase(),
+            matriculaResp: document.getElementById('matResponsavel').value.trim().toUpperCase(),
+            qtd: document.getElementById('qtdSaida').value,
+            data: dataFormatada
+        };
+
+        registrosSaidas.unshift(novoRegistro); // Adiciona no topo do array
+        fecharModal();
+        renderizarTabela();
+    });
+
+    // Deletar um registro específico
+    window.excluirSaida = function(index) {
+        if (confirm("Tem certeza de que deseja remover este registro de responsabilidade?")) {
+            registrosSaidas.splice(index, 1);
+            renderizarTabela();
+        }
+    };
+
+    // Filtro em tempo real no campo de pesquisa do Header
+    inputBusca.addEventListener('input', (e) => {
+        const busca = e.target.value.toLowerCase().trim();
+        const filtrados = registrosSaidas.filter(r => 
+            r.idItem.toLowerCase().includes(busca) ||
+            r.matriculaFunc.toLowerCase().includes(busca) ||
+            r.matriculaResp.toLowerCase().includes(busca) ||
+            r.status.toLowerCase().includes(busca)
+        );
+        renderizarTabela(filtrados);
+    });
+
+    // Primeira renderização na montagem da tela
+    renderizarTabela();
+</script>
+</body>
+</html>
