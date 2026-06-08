@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+
+    <title>PlaniMass</title>
+
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="tailwind-config.js"></script>
+    <link href="style.css" rel="stylesheet"/>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md z-20 hidden md:flex">
+    <div class="px-md mb-lg">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
+            <div>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
+            </div>
+        </div>
+    </div>
+
+    <ul class="flex-1 flex flex-col gap-sm">
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Painel</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="gest.html">
+                <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                <span>Inventário</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fornecedores.html">
+                <span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+                <span>Fornecedores</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-primary border-l-4 border-primary bg-primary-fixed-dim/10 transition-all">
+                <span class="material-symbols-outlined icon-filled" data-icon="outbox">outbox</span>
+                <span class="font-bold">Saídas</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="perfil.html">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
+                <span>Perfil do Usuário</span>
+            </a>
+        </li>
+    </ul>
+
+    <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            <span>Configurações</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="suporte.html">
+            <span class="material-symbols-outlined" data-icon="help">help</span>
+            <span>Suporte</span>
+        </a>
+    </div>
+</nav>
+
+<div class="flex-1 flex flex-col min-h-screen md:ml-[240px] w-full">
+    <header class="flex justify-between items-center w-full px-md h-16 sticky top-0 bg-surface border-b border-outline-variant shadow-sm z-10">
+        <div class="flex items-center gap-md">
+            <button class="md:hidden text-on-surface p-sm hover:bg-surface-variant rounded-full transition-colors">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="relative hidden sm:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+                <input class="pl-10 pr-4 py-1.5 bg-surface-container border border-outline-variant rounded-full text-body-sm font-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 transition-all" placeholder="Pesquisar saídas..." type="text"/>
+            </div>
+        </div>
+        <div class="flex items-center gap-sm">
+            <button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-surface-variant rounded-full transition-colors active:scale-95">
+                <span class="material-symbols-outlined">notifications</span>
+            </button>
+            <button class="p-sm text-on-surface-variant hover:text-primary-container hover:bg-surface-variant rounded-full transition-colors active:scale-95">
+                <span class="material-symbols-outlined">logout</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 p-margin-mobile md:p-margin-desktop overflow-x-hidden flex flex-col gap-lg bg-background">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-md">
+            <div>
+                <h2 class="font-headline-lg text-headline-lg text-on-background">Gestão de Saídas</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Acompanhe e gerencie a distribuição de itens e solicitações.</p>
+            </div>
+            <div class="flex gap-sm w-full sm:w-auto">
+                <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-lg py-2 bg-surface border border-primary text-primary rounded font-body-md font-medium hover:bg-primary/5 transition-colors">
+                    <span class="material-symbols-outlined text-[18px]">filter_list</span>
+                    Filtrar
+                </button>
+                <button class="flex-1 sm:flex-none flex items-center justify-center gap-2 px-lg py-2 bg-primary text-on-primary rounded font-body-md font-medium hover:bg-primary-container transition-colors shadow-sm">
+                    <span class="material-symbols-outlined text-[18px]">add</span>
+                    Nova Saída
+                </button>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 xl:grid-cols-12 gap-lg">
+            <div class="xl:col-span-8 flex flex-col bg-surface border border-outline-variant rounded-lg shadow-sm overflow-hidden">
+                <div class="p-lg border-b border-outline-variant flex justify-between items-center bg-surface-container-lowest">
+                    <h3 class="font-headline-sm text-headline-sm text-on-surface">Registro de Responsabilidade de Itens</h3>
+                    <button class="text-primary hover:text-primary-container p-sm rounded-full hover:bg-primary-fixed-dim/10 transition-colors">
+                        <span class="material-symbols-outlined">more_vert</span>
+                    </button>
+                </div>
+                <div class="table-container overflow-x-auto w-full">
+                    <table class="w-full text-left border-collapse">
+                        <thead class="bg-surface-container-low font-label-caps text-label-caps text-on-surface-variant uppercase sticky top-0 shadow-[0_4px_4px_-4px_rgba(0,0,0,0.05)] z-10">
+                            <tr>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap w-20 text-center">Status</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">ID do Item</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Matrícula Funcionário</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Matrícula Responsável</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Qtd Saída</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Data de Saída</th>
+                                <th class="py-[8px] px-[12px] font-semibold border-b border-outline-variant whitespace-nowrap text-center">Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody class="font-data-mono text-data-mono text-on-surface bg-surface-container-lowest">
+                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group">
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-tertiary-container">Concluído</span>
+                                </td>
+                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
+                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
+                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group bg-surface-container-low/30">
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-secondary-fixed text-on-secondary-container">Pendente</span>
+                                </td>
+                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
+                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
+                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group">
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-tertiary-fixed text-tertiary-container">Concluído</span>
+                                </td>
+                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
+                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
+                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                            <tr class="hover:bg-primary/2 border-b border-outline-variant transition-colors group bg-surface-container-low/30">
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-surface-variant text-on-surface-variant">Arquivado</span>
+                                </td>
+                                <td class="py-[8px] px-[12px] text-primary text-center"></td> <!-- ITM-4029 --> <!---->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- MAT-88210 -->
+                                <td class="py-[8px] px-[12px] text-center"></td> <!-- RESP-001 -->
+                                <td class="py-[8px] px-[12px] text-center font-medium"></td> <!-- 150 -->
+                                <td class="py-[8px] px-[12px] text-center text-on-surface-variant"></td> <!-- 24/10/2023 -->
+                                <td class="py-[8px] px-[12px] text-center">
+                                    <div class="flex items-center justify-center gap-xs opacity-0 group-hover:opacity-100 transition-opacity">
+                                        <button class="p-1 text-on-surface-variant hover:text-primary rounded"><span class="material-symbols-outlined text-[18px]">edit</span></button>
+                                        <button class="p-1 text-on-surface-variant hover:text-error rounded"><span class="material-symbols-outlined text-[18px]">delete</span></button>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="p-sm bg-surface-container-lowest border-t border-outline-variant flex justify-between items-center text-body-sm text-on-surface-variant">
+                    <span>Exibindo 4 de 128 registros</span>
+                    <div class="flex gap-xs">
+                        <button class="p-1 hover:bg-surface-variant rounded disabled:opacity-50"><span class="material-symbols-outlined text-[18px]">chevron_left</span></button>
+                        <button class="p-1 hover:bg-surface-variant rounded"><span class="material-symbols-outlined text-[18px]">chevron_right</span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="xl:col-span-4 flex flex-col gap-lg">
+                <div class="flex flex-col bg-surface border border-outline-variant rounded-lg shadow-sm overflow-hidden h-full">
+                    <div class="p-lg border-b border-outline-variant bg-surface-container-lowest flex justify-between items-center">
+                        <div>
+                            <h3 class="font-headline-sm text-headline-sm text-on-surface">Solicitações Ativas</h3>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Cronograma de Pedidos</p>
+                        </div>
+                        <span class="bg-primary-fixed text-on-primary-fixed text-xs font-bold px-2 py-1 rounded-full">3 Novas</span>
+                    </div>
+                    <div class="flex-1 overflow-y-auto p-md flex flex-col gap-sm bg-surface-container-lowest">
+                        <div class="p-md rounded border border-outline-variant bg-surface hover:border-primary transition-colors cursor-pointer flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="font-data-mono text-data-mono font-semibold text-on-surface">REQ-9902</span>
+                                <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+                                    <span class="material-symbols-outlined text-[14px]">schedule</span> 14:30
+                                </span>
+                            </div>
+                            <button class="text-primary font-body-sm font-medium hover:underline">Revisar</button>
+                        </div>
+                        <div class="p-md rounded border border-outline-variant bg-surface hover:border-primary transition-colors cursor-pointer flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="font-data-mono text-data-mono font-semibold text-on-surface">REQ-9903</span>
+                                <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+                                    <span class="material-symbols-outlined text-[14px]">schedule</span> 15:00
+                                </span>
+                            </div>
+                            <button class="text-primary font-body-sm font-medium hover:underline">Revisar</button>
+                        </div>
+                        <div class="p-md rounded border border-outline-variant bg-surface hover:border-primary transition-colors cursor-pointer flex justify-between items-center">
+                            <div class="flex flex-col">
+                                <span class="font-data-mono text-data-mono font-semibold text-on-surface">REQ-9905</span>
+                                <span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1 mt-1">
+                                    <span class="material-symbols-outlined text-[14px]">schedule</span> 16:45
+                                </span>
+                            </div>
+                            <button class="text-primary font-body-sm font-medium hover:underline">Revisar</button>
+                        </div>
+                    </div>
+                    <div class="p-sm bg-surface-container border-t border-outline-variant">
+                        <button class="w-full py-2 text-center text-primary font-body-md font-medium hover:bg-primary-fixed-dim/10 rounded transition-colors">
+                            Visualizar Todas as Solicitações
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+
+</body>
+</html> 
+

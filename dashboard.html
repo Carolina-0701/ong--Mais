@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="light" lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PlaniMass</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <script src="tailwind-config.js"></script>
+    
+    <link href="style.css" rel="stylesheet"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="bg-background text-on-background font-body-md bg-grid-pattern min-h-screen">
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md z-20 hidden md:flex">
+    <div class="px-md mb-lg">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
+            <div>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
+            </div>
+        </div>
+    </div>
+    <ul class="flex-1 flex flex-col gap-sm">
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-primary border-l-4 border-primary bg-primary-fixed-dim/10 transition-all">
+                <span class="material-symbols-outlined icon-filled" data-icon="dashboard">dashboard</span>
+                <span class="font-bold">Painel</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="gest.html">
+                <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                <span>Inventário</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fornecedores.html">
+                <span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+                <span>Fornecedores</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fluxo.html">
+                <span class="material-symbols-outlined" data-icon="outbox">outbox</span>
+                <span>Saídas</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="perfil.html">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
+                <span>Perfil do Usuário</span>
+            </a>
+        </li>
+    </ul>
+    <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            <span>Configurações</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="suporte.html">
+            <span class="material-symbols-outlined" data-icon="help">help</span>
+            <span>Suporte</span>
+        </a>
+    </div>
+</nav>
+
+<header class="flex justify-between items-center w-full px-md h-16 bg-surface border-b border-outline-variant shadow-sm sticky top-0 z-10 md:ml-[240px] md:max-w-[calc(100%-240px)]">
+    <div class="flex items-center gap-4">
+        <button class="md:hidden text-on-surface-variant hover:text-primary transition-colors">
+            <span class="material-symbols-outlined">menu</span>
+        </button>
+        <div class="relative hidden sm:block">
+            <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+            <input class="pl-10 pr-4 py-1.5 bg-surface-container border border-outline-variant rounded-full font-body-sm text-body-sm focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary w-64 text-on-surface" placeholder="Buscar..." type="text"/>
+        </div>
+    </div>
+    <div class="flex items-center gap-2">
+        <button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer active:scale-95 rounded-full hover:bg-surface-variant">
+            <span class="material-symbols-outlined">notifications</span>
+        </button>
+        <button class="p-2 text-on-surface-variant hover:text-primary-container transition-colors cursor-pointer active:scale-95 rounded-full hover:bg-surface-variant">
+            <span class="material-symbols-outlined">logout</span>
+        </button>
+    </div>
+</header>
+
+<main class="md:ml-[240px] p-margin-mobile md:p-margin-desktop max-w-7xl mx-auto">
+    <div class="mb-lg flex justify-between items-end">
+        <div>
+            <h2 class="font-headline-lg text-headline-lg text-on-background mb-1">Visão Geral</h2>
+            <p class="font-body-md text-body-md text-on-surface-variant">Acompanhe suas principais métricas e acesse planilhas recentes.</p>
+        </div>
+        <button class="hidden sm:flex items-center gap-2 bg-primary text-on-primary px-4 py-2 rounded-DEFAULT font-data-mono text-data-mono hover:bg-primary-container transition-colors shadow-sm">
+            <span class="material-symbols-outlined text-[18px]">add</span>
+            Nova Entrada
+        </button>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-md mb-xl">
+        <div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-DEFAULT shadow-sm relative overflow-hidden group hover:border-primary transition-colors">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-primary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+                <p class="font-label-caps text-label-caps text-on-surface-variant">TOTAL DE ITENS NO INVENTÁRIO</p>
+                <span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-full">inventory_2</span>
+            </div>
+            <div class="relative z-10">
+                <h3 class="font-headline-lg text-headline-lg text-on-background"></h3> <!-- 14,205 -->
+                <div class="flex items-center gap-1 mt-2 text-tertiary">
+                    <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                    <span class="font-data-mono text-body-sm font-semibold"></span> <!--+12%--> 
+                    <span class="font-body-sm text-body-sm text-on-surface-variant ml-1">vs mês passado</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-DEFAULT shadow-sm relative overflow-hidden group hover:border-secondary-container transition-colors">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-secondary-container/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+                <p class="font-label-caps text-label-caps text-on-surface-variant">FORNECEDORES ATIVOS</p>
+                <span class="material-symbols-outlined text-secondary-container bg-secondary-container/10 p-2 rounded-full">handshake</span>
+            </div>
+            <div class="relative z-10">
+                <h3 class="font-headline-lg text-headline-lg text-on-background"></h3> <!-- 84 -->
+                <div class="flex items-center gap-1 mt-2 text-on-surface-variant">
+                    <span class="material-symbols-outlined text-[16px]">horizontal_rule</span>
+                    <span class="font-data-mono text-body-sm font-semibold"></span> <!-- 0% -->
+                    <span class="font-body-sm text-body-sm ml-1">vs mês passado</span>
+                </div>
+            </div>
+        </div>
+        <div class="bg-surface-container-lowest border border-outline-variant p-lg rounded-DEFAULT shadow-sm relative overflow-hidden group hover:border-tertiary transition-colors">
+            <div class="absolute top-0 right-0 w-24 h-24 bg-tertiary/5 rounded-bl-full -mr-4 -mt-4 transition-transform group-hover:scale-110"></div>
+            <div class="flex justify-between items-start mb-4 relative z-10">
+                <p class="font-label-caps text-label-caps text-on-surface-variant">DISTRIBUIÇÕES SOCIAIS</p>
+                <span class="material-symbols-outlined text-tertiary bg-tertiary/10 p-2 rounded-full">outbox</span>
+            </div>
+            <div class="relative z-10">
+                <h3 class="font-headline-lg text-headline-lg text-on-background"></h3> <!-- 3,450 -->
+                <div class="flex items-center gap-1 mt-2 text-tertiary">
+                    <span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+                    <span class="font-data-mono text-body-sm font-semibold"></span> <!-- +24% -->
+                    <span class="font-body-sm text-body-sm text-on-surface-variant ml-1">vs mês passado</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-md">
+        <div class="lg:col-span-2 bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm p-lg">    
+            <div class="flex justify-between items-center mb-md border-b border-outline-variant pb-3">
+                <h3 class="font-headline-sm text-headline-sm text-on-background">Tendências de Saída</h3>
+                <div class="flex gap-2">
+                    <button class="font-label-caps text-label-caps px-3 py-1 bg-surface-variant text-on-surface rounded-sm">7D</button>
+                    <button class="font-label-caps text-label-caps px-3 py-1 bg-primary text-on-primary rounded-sm">30D</button>
+                    <button class="font-label-caps text-label-caps px-3 py-1 bg-surface-variant text-on-surface rounded-sm">1A</button>
+                </div>
+            </div>
+            <div class="h-64 relative flex items-end justify-between gap-2 pt-8 pb-4 px-2">
+                <div class="absolute left-0 top-0 bottom-8 w-8 flex flex-col justify-between items-end pr-2 font-data-mono text-[10px] text-on-surface-variant">
+                    <span>1k</span> <span>750</span> <span>500</span> <span>250</span> <span>0</span>
+                </div>
+                <div class="absolute left-8 right-0 top-0 bottom-8 flex flex-col justify-between z-0">
+                    <div class="border-t border-outline-variant/30 w-full h-0"></div>
+                    <div class="border-t border-outline-variant/30 w-full h-0"></div>
+                    <div class="border-t border-outline-variant/30 w-full h-0"></div>
+                    <div class="border-t border-outline-variant/30 w-full h-0"></div>
+                    <div class="border-t border-outline-variant w-full h-0"></div>
+                </div>
+                <div id="grafico-barras" 
+                  class="w-full flex justify-between items-end h-full z-10 pl-8">
+                </div>
+            </div>
+            <div class="flex justify-between pl-8 pr-2 font-data-mono text-[10px] text-on-surface-variant mt-2">
+                <span>Seg</span> <span>Ter</span> <span>Qua</span> <span>Qui</span> <span>Sex</span> <span>Sáb</span> <span>Dom</span>
+            </div>
+        </div>
+        
+        <script>
+          const dados = [400, 550, 300, 700, 450, 850, 1000];
+          const container = document.getElementById('grafico-barras');
+
+          function renderizarBarras() {
+            container.innerHTML = ''; // Limpa antes de renderizar
+            dados.forEach(valor => {
+                const percentual = (valor / 1000) * 100;
+                const barra = document.createElement('div');
+                barra.className = "w-1/12 bg-primary/60 hover:bg-primary transition-colors rounded-t-sm relative group cursor-pointer";
+                barra.style.height = `${percentual}%`;
+            
+                // Tooltip
+                barra.innerHTML = `
+                  <div class="absolute -top-8 left-1/2 -translate-x-1/2 bg-on-surface text-surface px-2 py-1 rounded text-xs font-data-mono z-20 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+                    ${valor}
+                    </div>
+                `;
+                container.appendChild(barra);
+            });
+          }
+          renderizarBarras();
+        </script>
+        
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-DEFAULT shadow-sm p-lg flex flex-col">
+            <div class="flex justify-between items-center mb-md border-b border-outline-variant pb-3">
+                <h3 class="font-headline-sm text-headline-sm text-on-background">Acesso Rápido</h3>
+                <span class="material-symbols-outlined text-on-surface-variant text-sm cursor-pointer hover:text-primary">more_horiz</span>
+            </div>
+            <div class="flex-1 flex flex-col gap-3">
+                <a class="group block border border-outline-variant rounded-DEFAULT p-3 hover:border-primary hover:bg-surface-container-low transition-all" href="#">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                            <span class="material-symbols-outlined">grid_on</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-data-mono text-data-mono text-on-background group-hover:text-primary transition-colors">Inventário Principal T3</h4>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Atualizado há 2h por Sarah</p>
+                        </div>
+                        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">chevron_right</span>
+                    </div>
+                </a>
+                <a class="group block border border-outline-variant rounded-DEFAULT p-3 hover:border-secondary-container hover:bg-surface-container-low transition-all" href="#">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-secondary-container/10 rounded-sm flex items-center justify-center text-secondary-container group-hover:bg-secondary-container group-hover:text-on-secondary-container transition-colors">
+                            <span class="material-symbols-outlined">contact_page</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-data-mono text-data-mono text-on-background group-hover:text-secondary-container transition-colors">Fornecedores Ativos 2024</h4>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Atualizado há 1d pelo Admin</p>
+                        </div>
+                        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-secondary-container opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">chevron_right</span>
+                    </div>
+                </a>
+                <a class="group block border border-outline-variant rounded-DEFAULT p-3 hover:border-primary hover:bg-surface-container-low transition-all" href="#">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-primary/10 rounded-sm flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-on-primary transition-colors">
+                            <span class="material-symbols-outlined">local_shipping</span>
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-data-mono text-data-mono text-on-background group-hover:text-primary transition-colors">Saídas Pendentes</h4>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Atualizado há 3h por Mike</p>
+                        </div>
+                        <span class="material-symbols-outlined text-on-surface-variant group-hover:text-primary opacity-0 group-hover:opacity-100 transition-all transform translate-x-[-10px] group-hover:translate-x-0">chevron_right</span>
+                    </div>
+                </a>
+            </div>
+            <button class="mt-4 w-full py-2 border border-outline-variant text-on-surface-variant font-data-mono text-body-sm hover:bg-surface-variant transition-colors rounded-sm flex items-center justify-center gap-2">
+                <span class="material-symbols-outlined text-[16px]">view_list</span>
+                Ver Todas as Planilhas
+            </button>
+        </div>
+    </div>
+</main>
+</body>
+</html>

@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PlaniMass</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <script src="tailwind-config.js"></script>
+    
+    <link href="style.css" rel="stylesheet"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="bg-background text-on-background font-body-md antialiased min-h-screen flex flex-col md:flex-row">
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md z-20 hidden md:flex">
+    <div class="px-md mb-lg">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
+            <div>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
+            </div>
+        </div>
+    </div>
+    <ul class="flex-1 flex flex-col gap-sm">
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Painel</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-primary border-l-4 border-primary bg-primary-fixed-dim/10 transition-all">
+                <span class="material-symbols-outlined icon-filled" data-icon="inventory_2">inventory_2</span>
+                <span class="font-bold">Inventário</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fornecedores.html">
+                <span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+                <span>Fornecedores</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fluxo.html">
+                <span class="material-symbols-outlined" data-icon="outbox">outbox</span>
+                <span>Saídas</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="perfil.html">
+                <span class="material-symbols-outlined" data-icon="person">person</span>
+                <span>Perfil do Usuário</span>
+            </a>
+        </li>
+        <li>
+    </ul>
+    <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            <span>Configurações</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="suporte.html">
+            <span class="material-symbols-outlined" data-icon="help">help</span>
+            <span>Suporte</span>
+        </a>
+    </div>
+</nav>
+
+<div class="flex-1 flex flex-col md:ml-[240px] min-h-screen">
+    <header class="flex justify-between items-center w-full px-md h-16 bg-surface border-b border-outline-variant shadow-sm sticky top-0 z-10">
+        <div class="flex items-center gap-4">
+            <button class="md:hidden text-on-surface p-2">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+            <div class="relative hidden sm:block">
+                <span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant">search</span>
+                <input aria-label="Pesquisar no inventário" class="pl-10 pr-4 py-2 bg-surface-container-low border border-outline-variant rounded-lg focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary font-body-md text-body-md w-64 transition-all" placeholder="Pesquisar no inventário..." type="text"/>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+                <span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+            </button>
+            <button class="text-on-surface-variant hover:text-primary transition-colors p-2 rounded-full hover:bg-surface-variant">
+                <span class="material-symbols-outlined" data-icon="logout">logout</span>
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-1 p-4 md:p-8 overflow-x-hidden">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6 gap-4">
+            <div>
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Gestão de Inventário</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-1">Gerencie itens físicos e recursos.</p>
+            </div>
+            <div class="flex gap-3 w-full sm:w-auto">
+                <button class="flex items-center justify-center gap-2 px-4 py-2 border border-outline-variant rounded-lg font-data-mono text-data-mono text-on-surface hover:bg-surface-variant transition-colors flex-1 sm:flex-none">
+                    <span class="material-symbols-outlined text-sm">filter_list</span>
+                    Filtrar
+                </button>
+                <button class="flex items-center justify-center gap-2 px-4 py-2 bg-tertiary-fixed text-on-tertiary-fixed font-data-mono text-data-mono font-bold rounded-lg hover:bg-tertiary-fixed-dim transition-colors shadow-sm flex-1 sm:flex-none">
+                    <span class="material-symbols-outlined text-sm">add</span>
+                    Adicionar Item
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden flex flex-col max-h-[calc(100vh-200px)]">
+            <div class="p-3 border-b border-outline-variant bg-surface-container flex flex-wrap gap-3 items-center justify-between">
+                <div class="flex gap-2 items-center text-sm">
+                    <span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Visualizações:</span>
+                    <select aria-label="Visualizações de filtragem de itens" class="bg-transparent border-none font-body-md text-body-md text-primary font-medium focus:ring-0 cursor-pointer">
+                        <option>Todos os Itens</option>
+                        <option>Estoque Baixo</option>
+                        <option>Perecíveis</option>
+                    </select>
+                </div>
+                <div class="flex gap-2">
+                    <div class="relative">
+                        <span class="material-symbols-outlined absolute left-2 top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">search</span>
+                        <input aria-label="Filtrar linhas do inventário" class="pl-8 pr-3 py-1.5 bg-surface-container-lowest border border-outline-variant rounded font-body-sm text-body-sm focus:border-primary focus:ring-1 focus:ring-primary w-48" placeholder="Filtrar linhas..." type="text"/>
+                    </div>
+                </div>
+            </div>
+
+            <div class="overflow-auto table-scroll flex-1 relative">
+                <table class="w-full text-left border-collapse min-w-[800px]">
+                    <thead class="sticky top-0 bg-surface z-10 shadow-[0_1px_2px_rgba(0,0,0,0.05)]">
+                        <tr>
+                            <th class="p-3 border-b border-r border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low w-[80px]">id_item</th>
+                            <th class="p-3 border-b border-r border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low min-w-[200px]">nome</th>
+                            <th class="p-3 border-b border-r border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low w-[150px]">tipo</th>
+                            <th class="p-3 border-b border-r border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low">descricao</th>
+                            <th class="p-3 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant bg-surface-container-low w-[80px] text-center">Ação</th>
+                        </tr>
+                    </thead>
+                    <tbody class="font-data-mono text-data-mono">
+                        <tr class="hover:bg-primary/5 transition-colors group">
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">ITM-001</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface font-medium flex items-center gap-2">Cesta Básica</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-secondary-container/20 text-on-secondary-container border border-secondary-container/30">Alimento</span>
+                            </td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Kit de alimentos não perecíveis tipo A">Kit de alimentos não perecíveis tipo A</td>
+                            <td class="px-3 py-2 border-b border-outline-variant text-center">
+                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-primary/5 transition-colors group">
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">ITM-002</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface font-medium flex items-center gap-2">Caderno Universitário</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-primary-container/20 text-black border border-primary-container/30">Educação</span>
+                            </td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Caderno 10 matérias espiral">Caderno 10 matérias espiral</td>
+                            <td class="px-3 py-2 border-b border-outline-variant text-center">
+                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                            </td>
+                        </tr>
+                        <tr class="hover:bg-primary/5 transition-colors group">
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant">ITM-003</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface font-medium flex items-center gap-2">Cadeira de Rodas</td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant">
+                                <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-tertiary-container/20 text-black border border-tertiary-container/30">Saúde</span>
+                            </td>
+                            <td class="px-3 py-2 border-b border-r border-outline-variant text-on-surface-variant truncate max-w-[200px]" title="Cadeira de rodas manual adulto">Cadeira de rodas manual adulto</td>
+                            <td class="px-3 py-2 border-b border-outline-variant text-center">
+                                <button class="text-on-surface-variant hover:text-primary transition-colors opacity-0 group-hover:opacity-100">
+                                    <span class="material-symbols-outlined text-[20px]">edit</span>
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="p-2 border-t border-outline-variant bg-surface-container flex items-center justify-between text-body-sm font-body-sm">
+                <span class="text-on-surface-variant">3 itens</span>
+                <div class="flex items-center gap-4">
+                    <button class="text-on-surface-variant hover:text-primary disabled:opacity-50" disabled="">
+                        <span class="material-symbols-outlined">chevron_left</span>
+                    </button>
+                    <span class="font-data-mono">1 / 1</span>
+                    <button class="text-on-surface-variant hover:text-primary disabled:opacity-50" disabled="">
+                        <span class="material-symbols-outlined">chevron_right</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-8">
+            <h3 class="font-headline-sm text-headline-sm text-on-surface mb-4 flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary">local_shipping</span>
+                Entregas de Fornecedores (Fornecedor_Item)
+            </h3>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-5 shadow-sm col-span-1">
+                    <h4 class="font-body-lg text-body-lg font-medium text-on-surface mb-4 border-b border-outline-variant pb-2">Registrar Entrega</h4>
+                    <form class="space-y-4">
+                        <div>
+                            <label for="nota_fiscal_input" class="block font-label-caps text-label-caps text-on-surface-variant mb-1">nota_fiscal</label>
+                            <input id="nota_fiscal_input" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="ex. 123456789" type="text"/>
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="data_entrada_input" class="block font-label-caps text-label-caps text-on-surface-variant mb-1">data_entrada</label>
+                                <input id="data_entrada_input" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all" type="date"/>
+                            </div>
+                            <div>
+                                <label for="quantidade_input" class="block font-label-caps text-label-caps text-on-surface-variant mb-1">quantidade</label>
+                                <input id="quantidade_input" class="w-full p-2 bg-surface border border-outline-variant rounded-lg font-data-mono text-data-mono focus:border-primary focus:ring-1 focus:ring-primary transition-all" placeholder="0" type="number"/>
+                            </div>
+                        </div>
+                        <button class="w-full py-2 bg-primary text-on-primary font-body-md text-body-md font-medium rounded-lg hover:bg-primary-container transition-colors mt-2" type="button">
+                            Salvar Registro
+                        </button>
+                    </form>
+                </div>
+                
+                <div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-0 shadow-sm col-span-1 lg:col-span-2 flex flex-col overflow-hidden">
+                    <div class="p-4 border-b border-outline-variant bg-surface-container-low">
+                        <h4 class="font-body-lg text-body-lg font-medium text-on-surface">Recebimentos Recentes</h4>
+                    </div>
+                    <div class="overflow-auto flex-1 p-0">
+                        <table class="w-full text-left border-collapse">
+                            <thead class="bg-surface sticky top-0">
+                                <tr>
+                                    <th class="px-4 py-2 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Item</th>
+                                    <th class="px-4 py-2 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Nota Fiscal</th>
+                                    <th class="px-4 py-2 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant">Data Entrada</th>
+                                    <th class="px-4 py-2 border-b border-outline-variant font-label-caps text-label-caps text-on-surface-variant text-right">Qtd</th>
+                                </tr>
+                            </thead>
+                            <tbody class="font-data-mono text-data-mono">
+                                <tr class="hover:bg-surface-variant/50 border-b border-outline-variant/50 last:border-0">
+                                    <td class="px-4 py-3 text-on-surface font-medium">ITM-001</td>
+                                    <td class="px-4 py-3 text-on-surface-variant">NF-998234</td>
+                                    <td class="px-4 py-3 text-on-surface-variant">12/05/2024</td>
+                                    <td class="px-4 py-3 text-right text-primary font-medium">+500</td>
+                                </tr>
+                                <tr class="hover:bg-surface-variant/50 border-b border-outline-variant/50 last:border-0">
+                                    <td class="px-4 py-3 text-on-surface font-medium">ITM-002</td>
+                                    <td class="px-4 py-3 text-on-surface-variant">NF-112009</td>
+                                    <td class="px-4 py-3 text-on-surface-variant">10/05/2024</td>
+                                    <td class="px-4 py-3 text-right text-primary font-medium">+1200</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>
+</body>
+</html>

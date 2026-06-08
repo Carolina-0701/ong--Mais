@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>PlaniMass</title>
+    
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    
+    <script src="tailwind-config.js"></script>
+    
+    <link href="style.css" rel="stylesheet"/>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com"/>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+
+<body class="bg-background text-on-background font-body-md min-h-screen flex">
+<nav class="fixed left-0 top-0 h-full w-[240px] bg-surface-container-lowest border-r border-outline-variant flex flex-col py-md z-20 hidden md:flex">
+    <div class="px-md mb-lg">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-on-primary font-bold">P</div>
+            <div>
+                <h1 class="font-headline-sm text-headline-sm font-bold text-primary">PlaniMass</h1>
+                <p class="font-body-sm text-body-sm text-on-surface-variant">Admin Mais Social</p>
+            </div>
+        </div>
+    </div>
+    <ul class="flex-1 flex flex-col gap-sm">
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="dashboard.html">
+                <span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+                <span>Painel</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="gest.html">
+                <span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+                <span>Inventário</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fornecedores.html">
+                <span class="material-symbols-outlined" data-icon="handshake">handshake</span>
+                <span>Fornecedores</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors" href="fluxo.html">
+                <span class="material-symbols-outlined" data-icon="outbox">outbox</span>
+                <span>Saídas</span>
+            </a>
+        </li>
+        <li>
+            <a class="flex items-center gap-3 px-4 py-2 text-primary border-l-4 border-primary bg-primary-fixed-dim/10 transition-all">
+                <span class="material-symbols-outlined icon-filled" data-icon="person">person</span>
+                <span class="font-bold">Perfil do Usuário</span>
+            </a>
+        </li>
+    </ul>
+    <div class="mt-auto pt-lg border-t border-outline-variant px-sm flex flex-col gap-sm">
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="configuracoes.html">
+            <span class="material-symbols-outlined" data-icon="settings">settings</span>
+            <span>Configurações</span>
+        </a>
+        <a class="flex items-center gap-3 px-4 py-2 text-on-surface-variant hover:bg-surface-variant transition-colors rounded-DEFAULT" href="suporte.html">
+            <span class="material-symbols-outlined" data-icon="help">help</span>
+            <span>Suporte</span>
+        </a>
+    </div>
+</nav>
+
+<main class="flex-1 flex flex-col md:ml-[240px] w-full min-h-screen">
+    <header class="bg-surface dark:bg-surface-dim text-primary dark:text-inverse-primary font-headline-sm text-headline-sm docked full-width top-0 sticky shadow-sm border-b border-outline-variant dark:border-outline flex justify-between items-center w-full px-md h-16 z-10">
+        <div class="flex items-center md:hidden">
+            <span class="material-symbols-outlined text-primary cursor-pointer active:scale-95">menu</span>
+        </div>
+        <div class="hidden md:flex gap-lg">
+        </div>
+        <div class="flex items-center gap-sm">
+            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors hover:text-primary-container" data-icon="notifications">notifications</span>
+            <span class="material-symbols-outlined cursor-pointer active:scale-95 text-on-surface-variant hover:text-primary transition-colors hover:text-primary-container" data-icon="logout">logout</span>
+        </div>
+    </header>
+
+    <div class="p-margin-mobile md:p-margin-desktop flex-1">
+        <div class="max-w-5xl mx-auto">
+            <div class="mb-lg">
+                <h2 class="font-headline-lg text-headline-lg text-on-surface">Perfil do Funcionário</h2>
+                <p class="font-body-md text-body-md text-on-surface-variant mt-xs">Gerencie informações pessoais e visualize métricas de atividade.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-lg">
+                    <div class="lg:col-span-4 flex flex-col gap-lg">
+                        <div class="bg-surface rounded-xl border border-outline-variant p-lg flex flex-col items-center text-center">
+                            <div class="relative w-32 h-32 mb-md">
+                                <div class="w-full h-full rounded-full overflow-hidden border-4 border-surface">
+                                    <img id="avatar-img" alt="Avatar do Funcionário" class="w-full h-full object-cover" src="https://i.pinimg.com/736x/1d/ec/e2/1dece2c8357bdd7cee3b15036344faf5.jpg"/>
+                                </div>
+                                <label for="file-input" class="absolute bottom-0 right-0 bg-green-600 p-2 rounded-full border-4 border-surface cursor-pointer hover:bg-green-700 transition-colors shadow-sm">
+                                    <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"></path>
+                                    </svg>
+                                </label>
+                                <input type="file" id="file-input" class="hidden" accept="image/*" onchange="trocarFoto(event)" aria-label="Trocar foto de perfil">
+                            </div>
+                            <h3 class="font-headline-md text-headline-md text-on-surface"></h3> <!-- Ana Silva --> 
+                            <p class="font-body-md text-body-md text-primary mt-xs"></p> <!-- Coordenadora de Logística -->
+                            <div class="w-full mt-lg pt-lg border-t border-outline-variant">
+                                <div class="flex justify-between items-center py-xs">
+                                    <span class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</span> 
+                                    <span class="font-data-mono text-data-mono text-on-surface"></span> <!-- F-49201 -->
+                                </div>
+                                <div class="flex justify-between items-center py-xs">
+                                    <span class="font-label-caps text-label-caps text-on-surface-variant">SETOR</span>
+                                    <span class="font-body-md text-body-md text-on-surface"></span> <!-- Distribuição Central -->
+                                </div>
+                                <div class="flex justify-between items-center py-xs">
+                                    <span class="font-label-caps text-label-caps text-on-surface-variant">STATUS</span>
+                                    <span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-1 rounded font-data-mono text-xs">Ativo</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="bg-surface-container-low rounded-xl border border-outline-variant p-md">
+                            <div class="flex items-center gap-sm mb-sm">
+                                <span class="material-symbols-outlined icon-filled text-primary">volunteer_activism</span>
+                                <h4 class="font-headline-sm text-headline-sm text-on-surface">Mais Social</h4>
+                            </div>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant">Associação de Apoio Comunitário</p>
+                            <p class="font-body-sm text-body-sm text-on-surface-variant mt-xs">CNPJ:</p> <!-- : 00.000.000/0001-00 -->
+                        </div>
+                    </div>
+                    <div class="lg:col-span-8 flex flex-col gap-lg">
+                        <div class="bg-surface rounded-xl border border-outline-variant flex flex-col">
+                            <div class="p-md border-b border-outline-variant bg-surface-container-lowest rounded-t-xl">
+                                <h4 class="font-headline-sm text-headline-sm text-on-surface">Detalhes do Funcionário</h4>
+                            </div>
+                            <div class="p-lg grid grid-cols-1 md:grid-cols-2 gap-x-lg gap-y-md">
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">NOME COMPLETO</label>
+                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant"></div> <!-- Ana Cláudia Silva --><!---->
+                                </div>
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">MATRÍCULA</label>
+                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- F-49201 -->
+                                </div>
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">SETOR</label>
+                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant">Distribuição Central</div>
+                                </div>
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">DATA DE ADMISSÃO</label>
+                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- 12/03/2021 -->
+                                </div>
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">EMAIL INSTITUCIONAL</label>
+                                    <div class="font-body-md text-body-md text-on-surface py-2 border-b border-outline-variant"></div> <!-- ana.silva@maissocial.org.br -->
+                                </div>
+                                <div class="flex flex-col gap-base">
+                                    <label class="font-label-caps text-label-caps text-on-surface-variant">HORÁRIO</label>
+                                    <div class="font-data-mono text-data-mono text-on-surface py-2 border-b border-outline-variant"></div> <!-- 08:00 - 17:00 -->
+                                </div>
+                            </div>
+            
+                            <div class="p-md border-t border-outline-variant bg-surface-container-lowest rounded-b-xl flex justify-end gap-sm">
+                                <button class="px-4 py-2 font-body-md text-body-md text-primary border border-primary rounded-lg hover:bg-primary-fixed-dim/20 transition-colors">Editar Detalhes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script>
+                  function trocarFoto(event) {
+                    const file = event.target.files[0];
+                    if (file) {
+                        const reader = new FileReader();
+                        reader.onload = function(e) {
+                            document.getElementById('avatar-img').src = e.target.result;
+                        };
+                        reader.readAsDataURL(file);
+                    }}
+                </script>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>
